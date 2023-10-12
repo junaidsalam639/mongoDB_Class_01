@@ -71,3 +71,15 @@ app.listen(3000 , ()=>{
 // findById // Jis ki Id Milegi srif wahi user aeega
 // create // Add krne ke lye user ko
 // findBtIdAndDelete // delete krne ke lye
+
+
+// app.use(express.json())
+// Iska matlab hai ke agar koi client aapki application ko kisi API endpoint par POST ya PUT request bhejta hai aur wo request JSON data ke saath aati hai (jaisa ke { "name": "John", "age": 30 }), to express.json() middleware us JSON data ko parse karega aur aapko JavaScript object ke roop mein available karega, jise aap phir apne code mein istemal kar sakte hain.
+// Yeh middleware Express.js ke liye bohot useful hai jab aap JSON format mein data receive karna chahte hain, jaise ke API endpoints par data send karte waqt.
+
+
+
+
+
+
+
