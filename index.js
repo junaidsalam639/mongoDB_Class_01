@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const userModel = require('./Model/user');
+app.use(express.json());
 
 mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then(()=>{
     console.log('mongoose Connect');
@@ -9,16 +11,26 @@ mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then((
 })
 
 
-
-
-app.get('/' , (req , res)  => {
+app.get('/' , async (req , res)  => {
+    const user = await userModel.find(); 
+    console.log(user);
     res.send({
      status : 200,
-     message : 'This is Node Js'
+     user
  });
  });
- 
 
+ app.post('/' , async (req , res)  => {
+    try{
+        const user = await userModel.create({...req.body}); 
+        res.send({
+            status : 200,
+            user
+        });
+    }catch(err){
+        console.log(err);
+    }
+ });
 
 
 app.listen(3000 , ()=>{
