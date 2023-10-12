@@ -42,6 +42,18 @@ app.get('/' , async (req , res)  => {
  });
 
 
+ 
+ app.delete('/:id' , async (req , res)  => {
+    const user = await userModel.findByIdAndDelete(req.params.id);
+    res.status(200).send({
+        status : 200,
+        user
+    })
+ });
+
+
+
+
 app.listen(3000 , ()=>{
     console.log('Server Start');
 })
@@ -58,3 +70,4 @@ app.listen(3000 , ()=>{
 // find // sare user Ajaenge
 // findById // Jis ki Id Milegi srif wahi user aeega
 // create // Add krne ke lye user ko
+// findBtIdAndDelete // delete krne ke lye

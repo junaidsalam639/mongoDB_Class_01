@@ -6,7 +6,7 @@ const userScheme = new mongoose.Schema ({
     password : {type : mongoose.SchemaTypes.String, required : true},
 })
 
-const users = mongoose.model('Blogs' ,userScheme);
+const users = mongoose.model('Blogs' , userScheme);
 
 module.exports = users
 
