@@ -19,6 +19,15 @@ app.get('/' , async (req , res)  => {
      user
  });
  });
+ 
+ app.get('/:id' , async (req , res)  => {
+     const user = await userModel.findById(req.params.id); 
+     console.log(user);
+     res.send({
+      status : 200,
+      user
+  });
+  });
 
  app.post('/' , async (req , res)  => {
     try{
@@ -46,5 +55,6 @@ app.listen(3000 , ()=>{
 //Model  // Jis collection ke ander Schema aee ouse Model bolte he
 //Documentation // https://mongoosejs.com/docs/
 
-
-
+// find // sare user Ajaenge
+// findById // Jis ki Id Milegi srif wahi user aeega
+// create // Add krne ke lye user ko
