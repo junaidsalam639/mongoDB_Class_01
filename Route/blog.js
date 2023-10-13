@@ -56,7 +56,6 @@ app.get('/' , async (req , res)  => {
         res.status(200).send({
             status : 200,
             message : "User Updated successfully",
-            blog
         })
     }
     else {
