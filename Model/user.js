@@ -6,9 +6,6 @@ const userScheme = new mongoose.Schema ({
     password : {type : mongoose.SchemaTypes.String, required : true},
 })
 
-const users = mongoose.model('Blogs' , userScheme);
+const user = mongoose.model('users' , userScheme);
 
-module.exports = users
-
-
-
+module.exports = user
