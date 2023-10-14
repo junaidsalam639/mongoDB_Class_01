@@ -16,8 +16,6 @@ mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then((
 
 
 app.get('/' , async (req , res)  => {
-    const user = await userModel.find(); 
-    console.log(user);
     res.send({
      status : 200,
      message : 'mongoDB connect mongoose'
