@@ -3,10 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const blogRouter = require('./Route/blog');
 const userRouter = require('./Route/user')
-
+const studentRouter = require('./Route/student');
 app.use(express.json());
 app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
+app.use('/student' , studentRouter);
 
 mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then(()=>{
     console.log('mongoose Connect');
