@@ -11,10 +11,4 @@ const student = mongoose.model('students' , studentSchema);
 module.exports = student
 
 
-
-// {
-//     "studentName" : "mongoDB And mongoose",
-//       "studentClass" : "Web And App Development",
-//       "studentSubject" : "Javascript" 
-//   }
   
