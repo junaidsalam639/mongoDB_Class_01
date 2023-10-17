@@ -12,7 +12,7 @@ app.use('/student' , studentRouter);
 mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then(()=>{
     console.log('mongoose Connect');
 }).catch((err)=>{
-    console.log(err);
+    console.log(err.code);
 })
 
 
