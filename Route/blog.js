@@ -12,7 +12,6 @@ app.get('/' , async (req , res)  => {
  
  app.get('/:id' , async (req , res)  => {
      const blog = await blogModel.findById(req.params.id).populate('user').exec(); 
-     console.log(blog);
      res.send({
       status : 200,
       blog
