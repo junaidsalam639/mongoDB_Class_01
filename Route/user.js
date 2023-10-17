@@ -12,7 +12,6 @@ app.get('/' , async (req , res)  => {
  
  app.get('/:id' , async (req , res)  => {
      const user = await userModel.findById(req.params.id); 
-     console.log(user);
      res.send({
       status : 200,
       user
