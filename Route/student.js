@@ -13,7 +13,10 @@ app.get('/' , async (req , res) => {
 
 app.get('/:id' , async(req , res) =>{
     const student = await studentModel.findById(req.params.id);
-    res.status(200)
+    res.status(200).send({
+        status : 200,
+        student,
+    })
 })
 
 app.post('/' , async (req , res) => {
