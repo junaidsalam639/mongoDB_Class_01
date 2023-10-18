@@ -5,6 +5,7 @@ const app = router.Router();
 
 app.get('/' , async (req , res) => {
     const student = await studentModel.find();
+    console.log(student);
     res.status(200).send({
         status : 200,
         studentData : student,
