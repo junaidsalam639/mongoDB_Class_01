@@ -4,6 +4,7 @@ const userModel = require('../Model/user');
 
 app.get('/' , async (req , res)  => {
     const user = await userModel.find().populate('student').exec(); 
+    console.log(user);
     res.send({
      status : 200,
      user
