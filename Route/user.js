@@ -13,10 +13,18 @@ app.get('/' , async (req , res)  => {
  
  app.get('/:id' , async (req , res)  => {
      const user = await userModel.findById(req.params.id); 
-     res.send({
-      status : 200,
-      user
-  });
+     if(user){
+         res.send({
+          status : 200,
+          user
+      });
+     }
+     else{
+        res.send({
+            status : 200,
+            message : 'User Not Found'
+        });
+     }
   });
 
  app.post('/' , async (req , res)  => {
