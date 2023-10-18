@@ -13,10 +13,18 @@ app.get('/' , async (req , res)  => {
  
  app.get('/:id' , async (req , res)  => {
      const blog = await blogModel.findById(req.params.id).populate('user').exec(); 
-     res.send({
-      status : 200,
-      blog
-  });
+     if(blog){
+         res.send({
+          status : 200,
+          blog
+      });
+     }
+     else{
+        res.send({
+            status : 200,
+            message : 'User Not Found'
+        })
+     }
   });
 
  app.post('/' , async (req , res)  => {
