@@ -11,6 +11,10 @@ app.get('/' , async (req , res) => {
     })
 })
 
+app.get('/:id' , (req , res) => {
+    
+})
+
 app.post('/' , async (req , res) => {
    const practice = await practiceModel.create({...req.body});
    res.send({
