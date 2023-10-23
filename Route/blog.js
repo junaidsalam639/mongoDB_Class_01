@@ -4,7 +4,6 @@ const blogModel = require('../Model/blog');
 
 app.get('/' , async (req , res)  => {
     const blog = await blogModel.find().populate('user').exec(); 
-    console.log(blog);
     res.send({
      status : 200,
      blog

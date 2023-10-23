@@ -28,7 +28,7 @@ app.get('/:id' , async (req , res) => {
 })
 
 app.post('/' , async (req , res) => {
-   const practice = await practiceModel.create({...req.body}, {new : true});
+    const practice = await practiceModel.create({...req.body}, { new: true });
    res.send({
     status : 200,
     practice
