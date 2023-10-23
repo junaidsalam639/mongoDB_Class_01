@@ -13,10 +13,18 @@ app.get('/' , async (req , res) => {
 
 app.get('/:id' , async (req , res) => {
     const practice = await practiceModel.findById(req.params.id);
-    res.send({
-        status : 200,
-        practice
-    })
+    if(practice){
+        res.send({
+            status : 200,
+            practice
+        })
+    }
+    else{
+        res.send({
+            status : 500,
+            message : 'User Not Found'
+        })
+    }
 })
 
 app.post('/' , async (req , res) => {
