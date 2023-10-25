@@ -68,7 +68,3 @@ module.exports = blog
 
 
 
-
-
-
-
