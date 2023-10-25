@@ -5,7 +5,9 @@ const blogModel = require('../Model/blog');
 app.get('/' , async (req , res)  => {
     const blog = await blogModel.find().populate('user').exec(); 
     blog.map((blog) => {
-        console.log(blog.user.username);
+        console.log('Name : ===> ',blog.user.username);
+        console.log('Title : ===> ',blog.title);
+        console.log('Description : ===> ',blog.description);
     })
     res.send({
      status : 200,
