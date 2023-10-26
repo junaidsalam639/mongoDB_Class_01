@@ -39,7 +39,7 @@ app.post('/', async (req, res) => {
         
         const user = await userModel.create({ ...req.body });
         console.log('Hashed Password===>' , hash);
-        user.hash 
+        user.password = undefined
         res.send({
             status: 200,
             user
