@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const blogRouter = require('./Route/blog');
 const userRouter = require('./Route/user');
 app.use(express.json());
 app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
-
 mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then(()=>{
     console.log('mongoose Connect');
 }).catch((err)=>{
