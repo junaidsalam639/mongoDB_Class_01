@@ -2,6 +2,7 @@ const route = require('express');
 const app = route.Router();
 const userModel = require('../Model/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.get('/', async (req, res) => {
     const user = await userModel.find();
@@ -58,9 +59,17 @@ app.post('/login', async (req , res) => {
         if (user) {
             const isPasswordValid = bcrypt.compareSync(password, user.password);
             user.password = undefined
+
+            //Generate Token Code
+            const token = jwt.sign({
+                data : user,
+            } , 'bhsdghjxnxbzncvhzchysgdsjfkdslfkdsjfklsjksdhfhsdgf');
+            console.log(token);
+            
             if (isPasswordValid) {
                 res.status(200).send({
                     status: 200,
+                    token : token,
                     msg: 'User Login',
                     user
                 })

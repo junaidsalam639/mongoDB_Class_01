@@ -1,8 +1,9 @@
 const route = require('express');
 const app = route.Router();
 const blogModel = require('../Model/blog');
+const authenticatejwt = require('../helpers/authenticatejwt');
 
-app.get('/' , async (req , res)  => {
+app.get('/' , authenticatejwt , async (req , res)  => {
     const blog = await blogModel.find().populate('user').exec(); 
     res.send({
      status : 200,
