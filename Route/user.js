@@ -55,8 +55,10 @@ app.post('/login', async (req , res) => {
     try {
         const { email, password } = req.body;
         const user = await userModel.findOne({ email: email });
-        console.log('user===>',user);
+        console.log('user===> ', user);
         if (user) {
+            console.log(user.password);
+            console.log(password);
             const isPasswordValid = bcrypt.compareSync(password, user.password);
             user.password = undefined
 
