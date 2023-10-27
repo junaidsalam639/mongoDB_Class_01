@@ -3,7 +3,7 @@ const authenticatejwt = async (req, res, next) => {
     try{
         console.log('req.headers----->', req.headers);
         const token = req.headers?.authorization?.split(' ')[1];
-        console.log('token authorization ', token);
+        console.log('token authorization ------>', token);
         if (token) {
             const isVerify = await jwt.verify(token, 'bhsdghjxnxbzncvhzchysgdsjfkdslfkdsjfklsjksdhfhsdgf');
             console.log('isVerify-----> ', isVerify);
