@@ -56,7 +56,7 @@ app.post('/login', async (req , res) => {
         const { email , password } = req.body;
         console.log('email---->',email);
         const user = await userModel.findOne({ email: email });
-        console.log('user ===> ', user);
+        console.log('user -----> ', user);
         if (user) {
             console.log(user.password);
             console.log(password);
