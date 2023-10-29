@@ -1,18 +1,23 @@
+//Import 
 const mongoose = require('mongoose');
 const app = require('express');
 const route = app();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
+// UserSchema 
 const practiceSchema = new mongoose.Schema({
     username: { type: mongoose.SchemaTypes.String, required: true },
     email: { type: mongoose.SchemaTypes.String, required: true, unique: true },
     password: { type: mongoose.SchemaTypes.String, required: true },
 })
 
+// UserModel
 const model = mongoose.model('practice', practiceSchema);
 
 
+// All UserGet
 route.get('/', async (req, res) => {
     const practice = await model.find();
     res.status(200).send({
@@ -21,6 +26,7 @@ route.get('/', async (req, res) => {
     })
 })
 
+// User Password Hash Me Convert
 route.post('/', async (req, res) => {
     console.log(req.body.password);
     const round = 10;
@@ -36,6 +42,8 @@ route.post('/', async (req, res) => {
     })
 })
 
+
+// User Find And Password Compare And User Token Generate
 route.post('/login', async (req, res) => {
     const { email, password } = req.body
     const isUser = await model.findOne({ email: email });
@@ -72,8 +80,24 @@ route.post('/login', async (req, res) => {
 
 
 
-
-
+// User MiddleWare Function WithOut Token Not Entry
+const authentication = async (req , res , next) => {
+    console.log(req.headers);
+    const token = req.headers?.authorization?.split(' ')[1];
+    console.log(token);
+    if(token){
+       const verify = await jwt.verify(token , 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg');
+       console.log(verify);
+       next();
+    }
+    else{
+        res.status(403).send({
+            status : 403,
+            masg : 'Toekn Does Not Exists',
+            error : true
+        })
+    }
+}
 
 
 
