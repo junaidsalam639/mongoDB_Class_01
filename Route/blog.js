@@ -5,6 +5,7 @@ const authenticatejwt = require('../helpers/authenticatejwt');
 
 app.get('/' , authenticatejwt , async (req , res)  => {
     const blog = await blogModel.find().populate('user').exec(); 
+    console.log(blog);
     res.send({
      status : 200,
      blog
