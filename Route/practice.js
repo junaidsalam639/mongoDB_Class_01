@@ -24,11 +24,12 @@ app.get('/practice', async (req, res) => {
 })
 
 app.post('/practice', async (req, res) => {
+    console.log(req.body.password);
     const rounds = 10
     const saltRounds = await bcrypt.genSaltSync(rounds);
     const hash = await bcrypt.hashSync(saltRounds);
     req.body.password = hash
-
+    console.log(hash);
     const practice = await practiceModel.create({ ...req.body });
     req.body.password = undefined
 
