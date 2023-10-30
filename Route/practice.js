@@ -8,9 +8,9 @@ const jwt = require('jsonwebtoken');
 
 // UserSchema 
 const practiceSchema = new mongoose.Schema({
-    username: { type: mongoose.SchemaTypes.String, required: true },
-    email: { type: mongoose.SchemaTypes.String, required: true, unique: true },
-    password: { type: mongoose.SchemaTypes.String, required: true },
+    class: { type: mongoose.SchemaTypes.String, required: true },
+    age: { type: mongoose.SchemaTypes.String, required: true },
+    number: { type: mongoose.SchemaTypes.String, required: true },
 })
 
 // UserModel
@@ -96,30 +96,7 @@ route.post('/login', async (req, res) => {
 })
 
 
-
-
-// User MiddleWare Function WithOut Token Not Entry
-const authentication = async (req, res, next) => {
-    console.log(req.headers);
-    const token = req.headers?.authorization?.split(' ')[1];
-    console.log(token);
-    if (token) {
-        const verify = await jwt.verify(token, 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg');
-        console.log(verify);
-        next();
-    }
-    else {
-        res.status(403).send({
-            status: 403,
-            masg: 'Toekn Does Not Exists',
-            error: true
-        })
-    }
-}
-
-authentication()
-
-
+module.exports = route
 
 
 
