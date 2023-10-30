@@ -8,9 +8,9 @@ const jwt = require('jsonwebtoken');
 
 // UserSchema 
 const practiceSchema = new mongoose.Schema({
-    class: { type: mongoose.SchemaTypes.String, required: true },
-    age: { type: mongoose.SchemaTypes.String, required: true },
-    number: { type: mongoose.SchemaTypes.String, required: true },
+    username: { type: mongoose.SchemaTypes.String, required: true },
+    email: { type: mongoose.SchemaTypes.String, required: true, unique: true },
+    password: { type: mongoose.SchemaTypes.String, required: true },
 })
 
 // UserModel
@@ -95,8 +95,6 @@ route.post('/login', async (req, res) => {
 
 })
 
-
-module.exports = route
 
 
 
