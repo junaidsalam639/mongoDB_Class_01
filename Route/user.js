@@ -74,7 +74,7 @@ app.post('/login', async (req , res) => {
                     status: 200,
                     token : token,
                     msg: 'User Login',
-                    user
+                    user,
                 })
             } else {
                 res.status(401).send({
