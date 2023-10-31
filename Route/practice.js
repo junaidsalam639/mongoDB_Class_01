@@ -26,7 +26,7 @@ route.get('/', async (req, res) => {
     })
 })
 
-// User Password Hash Me Convert
+// User Password Hash Me Convert And MongoDb Data Save
 route.post('/', async (req, res) => {
     try {
         console.log(req.body.password);
@@ -54,7 +54,6 @@ route.post('/', async (req, res) => {
 // User Find And Password Compare And User Token Generate
 route.post('/login', async (req, res) => {
     try {
-
         const { email, password } = req.body
         const isUser = await model.findOne({ email: email });
         console.log(isUser);
@@ -96,19 +95,65 @@ route.post('/login', async (req, res) => {
 })
 
 
+// User Delete Code
+app.delete('/:id', async (req, res) => {
+    try {
+        const practice = await model.findByIdAndDelete(req.params.id);
+        res.status(200).send({
+            status: 200,
+            msg: 'Practice Deleted Successfully'
+        })
+    } catch (err) {
+        res.status(403).send({
+            status: 403,
+            masg: 'Id Does Not Exists',
+            error: true
+        })
+    }
+})
 
+// User Update Code
+app.put('/:id', async (req, res) => {
+    try {
+        const practice = await model.findByIdAndUpdate(req.params.id, { ...req.body });
+        res.status(200).send({
+            status: 200,
+            msg: 'Practice Updated Successfully'
+        })
+    } catch (err) {
+        res.status(403).send({
+            status: 403,
+            masg: 'Id Does Not Exists',
+            error: true
+        })
+    }
+})
 
+//Middleware Function Without Token No Blog Show
+const authentication = async (req, res, next) => {
+    try {
 
-
-
-
-
-
-
-
-
-
-
+        console.log(req.headers);
+        const token = req.headers?.authorization?.split(' ')[1];
+        console.log(token);
+        if (token) {
+            const verify = await jwt.verify(token, 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg');
+            console.log(verify);
+        } else {
+            res.status(403).send({
+                status: 403,
+                masg: 'Token Does Not Exists',
+                error: true
+            })
+        }
+    } catch (err) {
+        res.status(403).send({
+            status: 403,
+            masg: 'Token Does Not Exists',
+            error: true
+        })
+    }
+}
 
 
 
