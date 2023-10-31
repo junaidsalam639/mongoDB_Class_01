@@ -10,6 +10,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
+app.use(morgan('tiny'));
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log('mongoose Connect');
@@ -35,6 +36,8 @@ app.listen(3000 , ()=>{
 // mongodb compass download
 // mongodb ip adress 0.0.0.0/0
 // npm i env // npm i dotenv
+// npm i bcrypt
+// npm i jsonwebtoken
 
 //Schema // kis format me data ko Bhejna he
 //Model  // Jis collection ke ander Schema aee ouse Model bolte he
