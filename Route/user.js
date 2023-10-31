@@ -63,13 +63,14 @@ app.post('/login', async (req , res) => {
             const isPasswordValid = bcrypt.compareSync(password, user.password);
             user.password = undefined
 
-            //Generate Token Code
-            const token = jwt.sign({
-                data : user,
-            } , 'bhsdghjxnxbzncvhzchysgdsjfkdslfkdsjfklsjksdhfhsdgf');
-            console.log(token);
-            
             if (isPasswordValid) {
+
+                //Generate Token Code
+                const token = jwt.sign({
+                    data : user,
+                } , 'bhsdghjxnxbzncvhzchysgdsjfkdslfkdsjfklsjksdhfhsdgf');
+                console.log(token);
+                
                 res.status(200).send({
                     status: 200,
                     token : token,
