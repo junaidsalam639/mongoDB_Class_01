@@ -4,10 +4,14 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const blogRouter = require('./Route/blog');
 const userRouter = require('./Route/user');
+// .env  npm i env // npm i dotenv
+// .env require dotenv ke package ka hona zarori hai
+require('dotenv').config();
 app.use(express.json());
 app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
-mongoose.connect('mongodb+srv://Blog:blog@cluster0.4t24tdb.mongodb.net/').then(()=>{
+
+mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log('mongoose Connect');
 }).catch((err)=>{
     console.log(err.code);
@@ -30,6 +34,7 @@ app.listen(3000 , ()=>{
 // npm i mongoose
 // mongodb compass download
 // mongodb ip adress 0.0.0.0/0
+// npm i env // npm i dotenv
 
 //Schema // kis format me data ko Bhejna he
 //Model  // Jis collection ke ander Schema aee ouse Model bolte he
