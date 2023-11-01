@@ -57,8 +57,8 @@ app.post('/login', async (req , res) => {
         const user = await userModel.findOne({ email: email });
         console.log('user -----> ', user);
         if (user) {
-            console.log(user.password);
-            console.log(password);
+            console.log('mongodb password----->',user.password);
+            console.log('body password------>',password);
             const isPasswordValid = bcrypt.compareSync(password, user.password);
             user.password = undefined
 
@@ -68,7 +68,7 @@ app.post('/login', async (req , res) => {
                 const token = jwt.sign({
                     data : user,
                 } , 'bhsdghjxnxbzncvhzchysgdsjfkdslfkdsjfklsjksdhfhsdgf');
-                console.log(token);
+                console.log('token----->',token);
                 
                 res.status(200).send({
                     status: 200,

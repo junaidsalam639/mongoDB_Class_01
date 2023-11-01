@@ -59,12 +59,13 @@ route.post('/login', async (req, res) => {
         console.log(isUser);
         if (isUser) {
             const isPassword = await bcrypt.compareSync(isUser.password, password);
-            console.log(isPassword);
+            console.log('Compare Password----->',isPassword);
             isUser.password = undefined
-            const token = jwt.sign({
-                data: isUser
-            }, 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg')
             if (isPassword) {
+                const token = jwt.sign({
+                    data: isUser
+                }, 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg');
+
                 res.status(200).send({
                     status: 200,
                     token,
@@ -132,7 +133,6 @@ app.put('/:id', async (req, res) => {
 //Middleware Function Without Token No Blog Show
 const authentication = async (req, res, next) => {
     try {
-
         console.log(req.headers);
         const token = req.headers?.authorization?.split(' ')[1];
         console.log(token);
