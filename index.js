@@ -12,6 +12,7 @@ app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
 app.use(morgan('tiny'));
 
+
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log('mongoose Connect');
 }).catch((err)=>{

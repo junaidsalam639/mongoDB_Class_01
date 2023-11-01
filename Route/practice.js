@@ -34,7 +34,7 @@ route.post('/', async (req, res) => {
         const salt = await bcrypt.genSaltSync(round);
         const hash = await bcrypt.hashSync(req.body.password, salt);
         req.body.password = hash
-        console.log(hash);
+        console.log('Hash Password------>',hash);
         const practice = await model.create({ ...req.body });
         practice.password = undefined
         res.status(200).send({
@@ -154,6 +154,30 @@ const authentication = async (req, res, next) => {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
