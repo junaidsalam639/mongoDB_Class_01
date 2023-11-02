@@ -138,7 +138,7 @@ const authentication = async (req, res, next) => {
         console.log(token);
         if (token) {
             const verify = await jwt.verify(token, 'dkjsfjhsdfgsdfhjfgsdhhfsdfsg');
-            console.log(verify);
+            console.log('User Verify---->',verify);
         } else {
             res.status(403).send({
                 status: 403,
