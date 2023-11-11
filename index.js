@@ -8,7 +8,7 @@ const userRouter = require('./Route/user');
 // .env require dotenv ke package ka hona zarori hai
 require('dotenv').config();
 app.use(express.json());
-app.use('/' , blogRouter);
+app.use('/blog' , blogRouter);
 app.use('/user' , userRouter);
 app.use(morgan('tiny'));
 
